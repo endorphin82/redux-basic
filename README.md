@@ -1,1 +1,1 @@
-# bassic-redux
+# redux-basic
