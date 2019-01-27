@@ -1,8 +1,8 @@
 const updateState = (state, { type, amount }) => {
   if (type === "INCREMENT") {
-    return state + amount;
+    return {count: state.count + amount};
   } else if (type === "DECREMENT") {
-    return state - amount;
+    return {count: state.count - amount};
   } else {
     return state;
   }
@@ -30,7 +30,9 @@ class Store {
   }
 }
 
-const store = new Store(updateState, 0);
+const initialState = { count: 0 };
+
+const store = new Store(updateState, initialState);
 
 const incrementAction = { type: "INCREMENT", amount: 5 };
 const decrementAction = { type: "DECREMENT", amount: 3 };
