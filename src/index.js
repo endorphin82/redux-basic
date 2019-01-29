@@ -6,7 +6,7 @@ import { createStore } from "redux";
 
 const initialState = { count: 0 };
 
-const reducer = (state = {count:0}, { type, amount }) => {
+const reducer = (state = { count: 0 }, { type, amount }) => {
   switch (type) {
     case "INCREMENT":
       return { count: state.count + amount };
@@ -19,9 +19,9 @@ const reducer = (state = {count:0}, { type, amount }) => {
   }
 };
 
-const incrementAction = { type: "INCREMENT", amount: 1 };
-const decrementAction = { type: "DECREMENT", amount: 1 };
-const resetAction = { type: "RESET" };
+const increment = amount => ({ type: "INCREMENT", amount });
+const decrement = amount => ({ type: "DECREMENT", amount });
+const reset = () => ({ type: "RESET" });
 
 const store = createStore(reducer, initialState);
 
@@ -40,15 +40,17 @@ class Counter extends React.Component {
   }
 
   increment() {
-    store.dispatch(incrementAction);
+    let amount = parseInt(this.refs.amount.value || 1);
+    store.dispatch(increment(amount));
   }
 
   decrement() {
-    store.dispatch(decrementAction);
+    let amount = parseInt(this.refs.amount.value || 1);
+    store.dispatch(decrement(amount));
   }
 
   reset() {
-    store.dispatch(resetAction);
+    store.dispatch(reset());
   }
 
   render() {
@@ -62,6 +64,7 @@ class Counter extends React.Component {
           <button className="reset" onClick={this.reset}>R</button>
           <button className="increment" onClick={this.increment}>+</button>
         </div>
+        <input type="text" ref="amount" defaultValue="1"/>
       </div>
     );
   }
