@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 import List from "../components/List";
 import { deleteTodo, toggleTodo, editTodo } from "../actions";
 
 
 class ListContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
-    this.store = this.props.store;
+    this.store = this.context.store;
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
@@ -38,12 +39,16 @@ class ListContainer extends Component {
   render() {
     const todos = this.store.getState();
     return (
-<List todos={todos}
-      onDelete={this.handleDelete}
-      onToggle={this.handleToggle}
-      onEdit={this.handleEdit}/>
+      <List todos={todos}
+            onDelete={this.handleDelete}
+            onToggle={this.handleToggle}
+            onEdit={this.handleEdit}/>
     );
   }
 }
+
+ListContainer.contextTypes = {
+  store: PropTypes.object
+};
 
 export default ListContainer;

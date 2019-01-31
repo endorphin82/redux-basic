@@ -2,12 +2,13 @@ import React, { Component } from "react";
 
 import Form from "../components/Form";
 import { addTodo } from "../actions";
+import PropTypes from "prop-types";
 
 class FormContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
-    this.store = this.props.store;
+    this.store = this.context.store;
 
     this.handleAdd = this.handleAdd.bind(this);
   }
@@ -22,5 +23,9 @@ class FormContainer extends Component {
     );
   }
 }
+
+FormContainer.contextTypes = {
+  store: PropTypes.object
+};
 
 export default FormContainer;
