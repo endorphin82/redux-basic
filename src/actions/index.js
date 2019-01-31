@@ -10,4 +10,3 @@ export {
 } from "./todo";
 
 export {SET_FILTER, setFilter} from "./filter";
-

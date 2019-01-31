@@ -8,10 +8,10 @@ function FilterLink(props) {
   );
 }
 
-FilterLink.propTypes = {
-  icon: React.PropTypes.string.isRequired,
-  active: React.PropTypes.bool.isRequired,
-  onClick: React.PropTypes.func.isRequired
-};
+// FilterLink.propTypes = {
+//   icon: React.PropTypes.string.isRequired,
+//   active: React.PropTypes.bool.isRequired,
+//   onClick: React.PropTypes.func.isRequired
+// };
 
 export default FilterLink;
