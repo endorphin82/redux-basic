@@ -4,14 +4,14 @@ import HeaderContainer from "./containers/HeaderContainer";
 import ListContainer from "./containers/ListContainer";
 import FormContainer from "./containers/FormContainer";
 
-const App = ({ store }) => {
+const App = () => {
   return (
     <main>
-      <HeaderContainer store={store}/>
+      <HeaderContainer />
 
-      <ListContainer store={store}/>
+      <ListContainer />
 
-      <FormContainer store={store}/>
+      <FormContainer />
     </main>
   );
 };
