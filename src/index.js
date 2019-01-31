@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore } from "redux";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+// import { Provider } from "react-redux";
 
 import reducer from "./reducers";
 import todos from "./todos";
@@ -27,7 +28,6 @@ Provider.childContextTypes = {
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
-  </Provider>
-
-  , document.getElementById("root"));
+    <App/>
+  </Provider>,
+  document.getElementById("root"));

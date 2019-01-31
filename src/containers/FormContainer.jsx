@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import Form from "../components/Form";
 import { addTodo } from "../actions";
-import PropTypes from "prop-types";
 
 class FormContainer extends Component {
   constructor(props, context) {
