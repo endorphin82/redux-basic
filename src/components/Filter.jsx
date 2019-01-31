@@ -26,9 +26,9 @@ function Filter(props) {
   );
 }
 
-Filter.propTypes = {
-  activeFilter: React.PropTypes.string.isRequired,
-  onSetFilter: React.PropTypes.func.isRequired
-};
+// Filter.propTypes = {
+//   activeFilter: React.PropTypes.string.isRequired,
+//   onSetFilter: React.PropTypes.func.isRequired
+// };
 
 export default Filter;
