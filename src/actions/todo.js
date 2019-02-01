@@ -1,9 +1,17 @@
+export const GET_TODOS = "GET_TODOS";
 export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const TOGGGLE_TODO = "TOGGGLE_TODO";
 export const EDIT_TODO = "EDIT_TODO";
 
 let nextId = 5;
+
+export function getTodos(todos) {
+  return {
+    type: GET_TODOS,
+    todos
+  };
+}
 
 export function addTodo(title) {
   return {
