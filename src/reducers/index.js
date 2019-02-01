@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { default as todos } from "./todo";
+import todos, * as fromTodos from "./todo";
 import { default as filter } from "./filter";
 
 const reducer = combineReducers({
@@ -9,3 +9,7 @@ const reducer = combineReducers({
 });
 
 export default reducer;
+
+export function getFilteredTodos(state) {
+  return fromTodos.getFilteredTodos(state.todos, state.filter);
+}
