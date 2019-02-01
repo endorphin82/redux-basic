@@ -34,7 +34,7 @@ const todoReducer = (state = {}, action) => {
   }
 };
 
-const reducer = (state = [], action) => {
+export default function reducer (state = [], action) {
   switch (action.type) {
     case ADD_TODO:
       return [...state, todoReducer(undefined, action)];
@@ -53,4 +53,15 @@ const reducer = (state = [], action) => {
   }
 };
 
-export default reducer;
+export const getFilteredTodos = (state, filter) => {
+  switch (filter) {
+    case "ALL":
+      return state;
+    case "COMPLETED":
+      return state.filter(todo => todo.completed);
+    case "UNCOMPLETED":
+      return state.filter(todo => !todo.completed);
+    default:
+      return state;
+  }
+};
