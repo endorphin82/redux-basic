@@ -6,11 +6,13 @@ export const EDIT_TODO = "EDIT_TODO";
 
 let nextId = 5;
 
-export function getTodos(todos) {
-  return {
-    type: GET_TODOS,
-    todos
-  };
+export function getTodos() {
+  return fetch("api/todos")
+    .then(response => response.json())
+    .then(todos => ({
+      type: GET_TODOS,
+      todos
+    }));
 }
 
 export function addTodo(title) {

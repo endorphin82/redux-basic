@@ -6,9 +6,7 @@ import store from "./store";
 import App from "./App";
 import { getTodos } from "./actions/todo";
 
-fetch("api/todos")
-  .then(response => response.json())
-  .then(todos => store.dispatch(getTodos(todos)));
+store.dispatch(getTodos());
 
 ReactDOM.render(
   <Provider store={store}>
