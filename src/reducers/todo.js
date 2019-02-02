@@ -8,39 +8,28 @@ import {
 
 const todoReducer = (state = {}, action) => {
   switch (action.type) {
-    case ADD_TODO:
-      return {
-        id: action.id,
-        title: action.title,
-        completed: false
-      };
     case TOGGGLE_TODO:
-      if (state.id !== action.id) {
+      if (state.id !== action.todo.id) {
         return state;
       }
 
-      return Object.assign({}, state, {
-        completed: !state.completed
-      });
+      return action.todo;
+
     case EDIT_TODO:
-      if (state.id !== action.id) {
+      if (state.id !== action.todo.id) {
         return state;
       }
 
-      return Object.assign({}, state, {
-        title: action.title
-      });
-    default:
-      return state;
+      return action.todo;
   }
 };
 
-export default function reducer (state = [], action) {
+export default function reducer(state = [], action) {
   switch (action.type) {
     case GET_TODOS:
       return action.todos;
     case ADD_TODO:
-      return [...state, todoReducer(undefined, action)];
+      return [...state, action.todo];
     case DELETE_TODO:
       const index = state.findIndex(todo => todo.id === action.id);
       return [
