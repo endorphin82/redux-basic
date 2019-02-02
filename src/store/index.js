@@ -1,23 +1,22 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import promise from "redux-promise";
+import thunk from "redux-thunk";
 
 import reducer from "../reducers";
 
-const addPromiseThunkSupport = store => {
-  const dispatch = store.dispatch;
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
 
-  return action => {
-    if (typeof action.then === "function") {
-      return action.then(dispatch);
-    } else if (typeof action === "function") {
-      return action(dispatch);
-    }
-
-    return dispatch(action);
-  };
-};
-
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
-store.dispatch = addPromiseThunkSupport(store);
+const store = createStore(reducer,
+  composeEnhancers(
+    applyMiddleware(
+      promise,
+      thunk)
+  )
+);
 
 export default store;
