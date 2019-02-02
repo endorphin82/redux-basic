@@ -5,7 +5,8 @@ import { deleteTodo, toggleTodo, editTodo } from "../actions";
 import {getFilteredTodos} from "../reducers";
 
 const mapStateToProps = state => ({
-  todos: getFilteredTodos(state)
+  todos: getFilteredTodos(state),
+  fetching: state.fetching
 });
 
 const mapDispatchToProps = dispatch => ({
