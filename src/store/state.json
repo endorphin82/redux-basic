@@ -21,5 +21,6 @@
       "completed": false
     }
   ],
-  "fiter": "ALL"
+  "fiter": "ALL",
+  "fetching": false
 }
