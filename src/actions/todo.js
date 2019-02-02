@@ -7,19 +7,20 @@ export const EDIT_TODO = "EDIT_TODO";
 
 let nextId = 5;
 
-export function requestTodos() {
-  return{
-    type: REQUEST_TODOS
-  }
-}
-
+//thunk
 export function getTodos() {
-  return fetch("api/todos")
-    .then(response => response.json())
-    .then(todos => ({
-      type: GET_TODOS,
-      todos
-    }));
+  return dispatch => {
+    dispatch({
+      type: REQUEST_TODOS
+    });
+    return fetch("api/todos")
+      .then(response => response.json())
+      .then(todos => dispatch({
+        type: GET_TODOS,
+        todos
+      }));
+  };
+
 }
 
 export function addTodo(title) {
